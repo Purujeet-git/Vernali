@@ -1,0 +1,101 @@
+'use client';
+
+import { useState,useRef } from 'react';
+import { useForm } from "react-hook-form";
+import { put } from '@vercel/blob';
+import React from 'react'
+import Link from 'next/link'
+const page = () => {
+  const inputFileRef = useRef(null);
+  const [blob, setblob] = useState(null);
+  const [uploadedUrls, setUploadedUrls] = useState([]);
+  const handleFileChange = async (event) => {
+    const files = event.target.files;
+    if (!files.length) return;
+
+    try {
+      const uploaded = await Promise.all(
+        Array.from(files).map(async (file) => {
+          console.log('Processing File:',file.name,file); 
+          console.log('File object:', file);
+          const blob = await put(`${file.name}`,file, {
+            access: 'public',
+            allowOverwrite: true,
+          });
+          return blob.url;
+        })
+      );
+
+      setUploadedUrls(uploaded);
+    } catch (err) {
+      console.error('Upload failed:', err);
+    }
+  };
+
+  
+  return (
+    <div>
+    
+      <div className='flex h-screen'>
+        <div className='w-1/4 bg-black flex flex-col items-center font-mono text-white text-xl gap-4 '>
+          <Link href={"./admin_dashboard"}><p className="my-4">Dashboard</p></Link>
+          <Link href={"./admin_dashboard"}><p className="my-4">Orders</p></Link>
+          <Link href={"./admin_dashboard"}><p className="my-4">Products</p></Link>
+        </div>
+        <div className=' mx-1 h-full flex flex-col items-center justify-center bg-white w-2/3'>
+          <div className="flex flex-col justify-center items-center font-mono">
+            
+            
+          </div>
+          <form
+  onSubmit={async (event) => {
+    event.preventDefault();
+    
+    const files = inputFileRef.current.files;
+
+    if (!files || files.length === 0) {
+      alert('No files selected!');
+      return;
+    }
+
+    try {
+      const uploaded = await Promise.all(
+        Array.from(files).map(async (file) => {
+          const response = await fetch(`/api/admin/upload?filename=${file.name}`, {
+            method: 'POST',
+            body: file,
+          });
+
+          const blob = await response.json();
+          return blob.url;
+        })
+      );
+
+      setUploadedUrls(uploaded);
+    } catch (err) {
+      console.error('Upload failed:', err);
+    }
+  }}
+>
+            <div>
+            <h2>Add New Product</h2>
+            <input type='text' />
+              <input name='file' ref={inputFileRef} type='file' required multiple accept="image/*" onChange={handleFileChange} />
+            </div>
+            <button className='bg-blue-500 text-white p-4'>Upload</button>
+          </form>
+          {blob &&(
+            <div>
+            {uploadedUrls.map((url, index) => (
+              <img key={index} src={url} alt={`Uploaded ${index}`} width={100} />
+            ))}
+          </div>
+    
+          )}
+          </div>
+        </div>  
+    </div>
+  )
+}
+
+export default page
