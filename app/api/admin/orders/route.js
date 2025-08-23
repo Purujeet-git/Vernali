@@ -2,22 +2,42 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/route";
 import connectDB from "@/lib/mongodb";
 import Orders from "@/models/Order";
+import { serializeMongoDoc } from "@/lib/serializeMongoDoc";
 
+export async function GET(request) {
+  // Check authentication
+  const session = await getServerSession(authOptions);
+  if (!session || session.user.role !== 'admin') {
+    return new Response(JSON.stringify({ error: "Unauthorised" }), { status: 401 });
+  }
 
-export async function GET(){
-    const session = await getServerSession(authOptions);
-
-if(!session || session.user.role !== 'admin'){
-    return new Response(JSON.stringify({error:"Unauthorised"}),{status:401});
+  try {
+    // Get status from query parameters
+    const { searchParams } = new URL(request.url);
+    const status = searchParams.get('status');
+    
+    await connectDB();
+    
+    // Filter by status if provided, otherwise get all orders
+    const query = status ? { orderStatus: status } : {};
+    const ordersRaw = await Orders.find(query).lean();
+    
+    // Serialize the orders to handle MongoDB ObjectIds
+    const orders = ordersRaw.map(serializeMongoDoc);
+    
+    return new Response(JSON.stringify(orders), { 
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching orders:', error);
+    return new Response(JSON.stringify({ error: 'Failed to fetch orders' }), { 
+      status: 500 
+    });
+  }
 }
-
-await connectDB();
-
-const orders = await Orders.find().lean();
-return new Response(JSON.stringify(orders),{status:200});
-}
-
-
 
 export async function POST(req) {
   await connectDB();
@@ -40,6 +60,7 @@ export async function POST(req) {
       razorpayOrderId: body.razorpayOrderId,
       razorpaySignature: body.razorpaySignature,
       paymentSuccess: body.paymentSuccess ?? false,
+      orderStatus: 'Processing', // Set default status
     });
 
     await newOrder.save();
@@ -48,7 +69,7 @@ export async function POST(req) {
       status: 200,
     });
   } catch (error) {
-    // console.error("Order creation failed:", error);
+    console.error("Order creation failed:", error);
     return new Response(JSON.stringify({ success: false, error: error.message }), {
       status: 500,
     });
