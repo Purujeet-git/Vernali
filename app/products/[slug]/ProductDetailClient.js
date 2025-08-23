@@ -5,7 +5,7 @@ import ProductCaraousel from "@/app/components/ProductCaraousel";
 import BuyNowButton from "@/app/components/BuyNowButton";
 import AddToCartButton from "@/app/components/AddToCartButton";
 import DeleteButton from "@/app/components/DeleteButton";
-
+import Image from "next/image";
 export default function ProductDetailClient({ product, isUserAdmin, imagesByColor, defaultColor }) {
   const [selectedColor, setSelectedColor] = useState(defaultColor);
 

@@ -53,13 +53,13 @@ const Navbar = () => {
             <li className='relative'><p onMouseEnter={() => setcategories(true)} >Categories</p>
               {categories ? <div onMouseLeave={() => setcategories(false)} className="absolute min-w-[15rem] top-full mt-1 bg-black shadow-lg rounded-md p-10 z-50">
                 <ul className=' '>
-                  <li className="p-1 cursor-pointer"><Link href={"/category/Woman-Fashion"} prefetch={true}>Women's Fashion</Link></li>
-                  <li className="p-1 cursor-pointer"><Link href={"/category/Men-Fashion"} prefetch={true}>Men's Fashion </Link></li>
+                  <li className="p-1 cursor-pointer"><Link href={"/category/Woman-Fashion"} prefetch={true}>{`Women's Fashion`}</Link></li>
+                  <li className="p-1 cursor-pointer"><Link href={"/category/Men-Fashion"} prefetch={true}>{`Men's Fashion`} </Link></li>
                   <li className="p-1 cursor-pointer"><Link href={"/category/Electronics"} prefetch={true}>Electronics </Link></li>
                   <li className="p-1 cursor-pointer"><Link href={"/category/Home-and-Lifestyle"} prefetch={true}>Home & Lifestyle </Link></li>
                   <li className="p-1 cursor-pointer"><Link href={"/category/Medicine"} prefetch={true}>Medicine </Link></li>
                   <li className="p-1 cursor-pointer"><Link href={"/category/Sports-and-Outdoor"} prefetch={true}>Sports & Outdoor </Link></li>
-                  <li className="p-1 cursor-pointer"><Link href={"/category/Baby-And-Toys"} prefetch={true}>Baby's & Toys </Link></li>
+                  <li className="p-1 cursor-pointer"><Link href={"/category/Baby-And-Toys"} prefetch={true}>{`Baby's & Toys`} </Link></li>
                   <li className="p-1 cursor-pointer"><Link href={"/category/Groceries-and-Pets"} prefetch={true}>Groceries & Pets </Link></li>
                   <li className="p-1 cursor-pointer"><Link href={"/category/Health-and-Beauty"} prefetch={true}>Health & Beauty </Link></li>
                 </ul>

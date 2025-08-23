@@ -6,6 +6,7 @@ import { put } from '@vercel/blob';
 import React from 'react';
 import Link from 'next/link';
 import slugify from 'slugify';
+import Image from 'next/image';
 
 const AddProductForm = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
@@ -182,7 +183,7 @@ const AddProductForm = () => {
               {uploadedImages[ci.color]?.length > 0 && (
                 <div className="flex space-x-2 mt-2">
                   {uploadedImages[ci.color].map((url, i) => (
-                    <img key={i} src={url} width={80} className="border rounded" />
+                    <Image key={i} src={url} height={80} alt='image' width={80} className="border rounded" />
                   ))}
                 </div>
               )}

@@ -1,5 +1,6 @@
 // CartItem.js
 import { useState } from "react";
+import Image from "next/image";
 
 const CartItem = ({ item, onDelete, onQuantityChange }) => {
   const [quantity, setQuantity] = useState(item.quantity);

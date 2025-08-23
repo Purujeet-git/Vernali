@@ -51,7 +51,7 @@ export default function Myorders() {
     <div className="p-6 w-full mx-auto text-amber-200 flex flex-col items-center bg-black w">
       <h1 className="text-3xl font-bold mb-6">My Orders</h1>
       {orders.length === 0 ? (
-        <p>You haven't placed any orders yet.</p>
+        <p>{`You haven't placed any orders yet.`}</p>
       ) : (
         orders.map((order) => (
           <div key={order._id} className="border p-4 w-2/3 mb-4 rounded-lg shadow-md">

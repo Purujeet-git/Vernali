@@ -7,7 +7,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import Image from 'next/image';
 
 
-const page = () => {
+const Page = () => {
   const { data: session } = useSession()
 
   const [form, setForm] = useState({email:"",password:""});
@@ -32,7 +32,7 @@ const page = () => {
     <>
     {session ? (
         <>
-          <p className='text-black'>Welcome, {session.user?.name}!</p>
+          <p className='text-black'>{`Welcome, `}{session.user?.name}!</p>
           <button onClick={() => signOut()}>Sign Out</button>
         </>
       ) :(
@@ -61,9 +61,9 @@ const page = () => {
         </form>
         <button onClick={()=> signIn("google")}  className='font-mono w-full text-black bg-white border flex items-center p-5 rounded-sm'>
           <Image src={"/google.png"} alt='google logo' height={50} width={50}/>
-          Sign Up/Login with Google</button>
+          {`Sign Up/Login with Google`}</button>
         <div className='flex justify-between gap-10'>
-          <p>New User??</p>
+          <p>{`New User??`}</p>
           <span 
           onClick={()=> router.push('/auth/signup')}
           className='hover:underline cursor-pointer text-blue-700'>Create account</span>
@@ -75,4 +75,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

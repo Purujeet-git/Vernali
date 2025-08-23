@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 
 export default function CarouselAdminPage() {
@@ -156,7 +157,8 @@ export default function CarouselAdminPage() {
         </button>
 
         {file && (
-          <img
+          <Image
+          height={500} width={1000}
             src={URL.createObjectURL(file)}
             alt="Preview"
             className="w-full h-48 object-cover rounded mb-4"
@@ -203,7 +205,9 @@ export default function CarouselAdminPage() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {slides.map((slide) => (
               <div key={slide._id} className="relative border rounded-lg overflow-hidden shadow">
-                <img
+                <Image
+                  height={500} 
+                  width={1000}
                   src={slide.imageUrl}
                   alt={slide.carouselSection}
                   className="w-full h-48 object-cover"
@@ -253,7 +257,9 @@ export default function CarouselAdminPage() {
               rel="noopener noreferrer"
               className="block"
             >
-              <img
+              <Image
+                height={500}
+                width={1000}
                 src={slide.imageUrl}
                 alt="carousel banner"
                 className="h-48 w-auto rounded shadow hover:scale-105 transition-transform"

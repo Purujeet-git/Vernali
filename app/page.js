@@ -81,7 +81,7 @@ export default function Home() {
       <div className="h-[50vh]  m-20">
           <div>
             <div className="flex mx-16">
-              <div className="h2 w-[2vw] bg-amber-200 rounded-sm"></div><p className="font-bold mx-5  text-amber-200">Today's</p></div>
+              <div className="h2 w-[2vw] bg-amber-200 rounded-sm"></div><p className="font-bold mx-5  text-amber-200">{`Today's`}</p></div>
               <div className="text-2xl my-8 mx-16 flex  gap-8 font-bold text-amber-200"><p>Flash Sales</p>
               </div>
               <div ><Caraousel2 /></div>
