@@ -29,7 +29,6 @@ export default function AdminDashboard() {
   const [latestOrders, setlatestOrders] = useState([]);
   const [authorized, setAuthorized] = useState(false);
 
-  const [visitorStats, setVisitorStats] = useState({ today: 0, week: 0, month: 0, total: 0 });
   
   useEffect(() => {
     if (status === 'loading') return <p> Loading ...</p>;
@@ -50,18 +49,6 @@ export default function AdminDashboard() {
     setAuthorized(true);
   }, [session, status,router]);
   
-  useEffect(() => {
-    const fetchVisitors = async () => {
-      try {
-        const res = await fetch("/api/admin/dashboard/visitors");
-        const json = await res.json();
-        if (json.success) setVisitorStats(json.data);
-      } catch (err) {
-        // console.error("Visitor stats fetch failed:", err);
-      }
-    };
-    fetchVisitors();
-  }, []);
 
 
   
@@ -243,24 +230,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* Visitor Statistics */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-white shadow rounded-xl p-6 text-center">
-              <p className="text-sm text-gray-500">👀 Visitors Today</p>
-              <h3 className="text-xl font-bold">{visitorStats.today}</h3>
-            </div>
-            <div className="bg-white shadow rounded-xl p-6 text-center">
-              <p className="text-sm text-gray-500">👣 This Week</p>
-              <h3 className="text-xl font-bold">{visitorStats.week}</h3>
-            </div>
-            <div className="bg-white shadow rounded-xl p-6 text-center">
-              <p className="text-sm text-gray-500">📆 This Month</p>
-              <h3 className="text-xl font-bold">{visitorStats.month}</h3>
-            </div>
-            <div className="bg-white shadow rounded-xl p-6 text-center">
-              <p className="text-sm text-gray-500">🧍 Total Visitors</p>
-              <h3 className="text-xl font-bold">{visitorStats.total}</h3>
-            </div>
-          </div>
+          
         </div>
       </div>
 
