@@ -1,10 +1,10 @@
-import { connectToDatabase } from "@/lib/mongodb";
+import connectDB from "@/lib/mongodb";
 import User from "@/models/User";
 import { NextResponse } from "next/server";
 
 export async function POST(req){
     try{
-        await connectToDatabase();
+        await connectDB();
         const { firstName, lastName, gender, email, phone } = await req.json();
 
         let user = await User.findOne({email});

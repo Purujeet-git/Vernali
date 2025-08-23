@@ -12,7 +12,7 @@ const CartItem = ({ item, onDelete, onQuantityChange }) => {
 
   return (
     <div className="flex gap-4 items-center border-b py-3">
-      <img src={item.image} alt={item.productName} className="w-16 h-16 object-cover" />
+      <Image height={200} width={500} src={item.image} alt={item.productName} className="w-16 h-16 object-cover" />
       <div className="flex-1">
         <p className="font-medium">{item.productName}</p>
         <p className="text-sm text-gray-500">{item.variant}</p>

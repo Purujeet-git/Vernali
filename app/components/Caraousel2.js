@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import Image from 'next/image';
 
 const settings = {
   dots: true,
@@ -33,7 +34,9 @@ const Carousel2 = () => {
         <Slider {...settings}>
           {Array.isArray(slides) && slides.map((slide, i) => (
             <div key={i} className="w-full h-[40vh]">
-              <img
+              <Image
+              height={500}
+              width={500}
                 src={slide.imageUrl}
                 alt={`Slide ${i}`}
                 className="w-full h-full object-contain"

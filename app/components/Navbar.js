@@ -1,13 +1,13 @@
 'use client'
-import React from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { useState } from 'react'
+import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useState } from 'react';
 import { Heart, ShoppingCart, Variable } from 'lucide-react';
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 import { useSession, signIn, signOut } from "next-auth/react";
-import { useRouter } from 'next/navigation'
-import SidebarCart from './SideBarCart'
+import { useRouter } from 'next/navigation';
+import SidebarCart from './SideBarCart';
 import { Pacifico as PacificoFont } from 'next/font/google';
 const pacifico = PacificoFont({
   subsets: ['latin'],

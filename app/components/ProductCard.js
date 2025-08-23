@@ -7,7 +7,9 @@ const ProductCard = ({ product }) => {
   return (
     <Link href={`/product/${productSlug}`} className="block border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
       <div className="w-full aspect-[4/5] bg-gray-100">
-        <img
+        <Image
+        height={1000}
+        width={1000}
           src={images?.[0] || '/placeholder.png'}
           alt={productName}
           className="object-cover w-full h-full"

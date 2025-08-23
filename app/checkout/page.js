@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const CheckoutPage = () => {
   const { data: session } = useSession();
@@ -128,7 +129,7 @@ const CheckoutPage = () => {
           {cartData.cartItems.map((item) => (
             <div key={item._id} className="flex justify-between mb-2">
               <span>
-                <img src={item.image} height={100} width={100} alt='image' />
+                <Image src={item.image} height={100} width={100} alt='image' />
                 </span>
 
               <span>{item.productName} x {item.quantity}</span>

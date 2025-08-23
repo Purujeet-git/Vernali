@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import axios from 'axios';
 
 export default function AdminReturnsPage() {
@@ -52,7 +53,7 @@ export default function AdminReturnsPage() {
           {req.photoUrl && (
             <div>
               <p><strong>Photo:</strong></p>
-              <img src={req.photoUrl} alt="Return Proof" className="w-32 h-32 object-cover border" />
+              <Image src={req.photoUrl} height={500} width={500} alt="Return Proof" className="w-32 h-32 object-cover border" />
             </div>
           )}
           <p><strong>Status:</strong> {req.status}</p>

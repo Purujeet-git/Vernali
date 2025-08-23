@@ -35,7 +35,9 @@ export default function ProductDetailClient({ product, isUserAdmin, imagesByColo
                   selectedColor === color ? "border-yellow-400" : "border-gray-400"
                 }`}
               >
-                <img
+                <Image 
+                height={5000}
+                width={5000}
                   src={imagesByColor[color]?.[0] || "/placeholder.jpg"}
                   alt={color}
                   className="w-full h-full object-cover"

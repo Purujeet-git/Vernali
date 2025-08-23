@@ -128,7 +128,9 @@ export default function Home() {
       {/* Left side - static2 (Prussian Blue) */}
       <div className="flex-1 aspect-[2/3]">
         {groupedSlides.static2?.[0] && (
-          <img
+          <Image
+          height={1000}
+          width={1000}
             src={groupedSlides.static2[0].imageUrl}
             alt="Static 2"
             className="h-full w-full object-cover rounded-md"
@@ -141,7 +143,9 @@ export default function Home() {
         {/* Top block - static3 (Orange) */}
         <div className="flex-1">
           {groupedSlides.static3?.[0] && (
-            <img
+            <Image 
+            height={5000}
+            width={5000}
               src={groupedSlides.static3[0].imageUrl}
               alt="Static 3"
               className="h-full w-full object-cover rounded-md"
@@ -153,7 +157,9 @@ export default function Home() {
         <div className="flex gap-4 flex-1">
           <div className="flex-1">
             {groupedSlides.static4?.[0] && (
-              <img
+              <Image
+              height={1000}
+              width={1000}
                 src={groupedSlides.static4[0].imageUrl}
                 alt="Static 4"
                 className="h-full w-full object-cover rounded-md"
@@ -162,7 +168,9 @@ export default function Home() {
           </div>
           <div className="flex-1">
             {groupedSlides.static5?.[0] && (
-              <img
+              <Image 
+              height={1000}
+              width={1000}
                 src={groupedSlides.static5[0].imageUrl}
                 alt="Static 5"
                 className="h-full w-full object-cover rounded-md"

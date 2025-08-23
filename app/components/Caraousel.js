@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect,useState } from 'react'
 import Link from 'next/link';
+import Image from 'next/image';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -36,7 +37,7 @@ const Caraousel = () => {
     <Slider {...settings} className='h-full'>
       { Array.isArray(slides) && slides.map((slide) => (
         <div key={slide._id} className='h-[88vh]'>
-          <Link href={slide.redirectUrl || "#"}><img src={slide.imageUrl} alt="" className='w-full h-full object-cover' /></Link>
+          <Link href={slide.redirectUrl || "#"}><Image src={slide.imageUrl} alt="" height={1000} width={1000} className='w-full h-full object-cover' /></Link>
         </div>
       ))}
     </Slider>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import Image from "next/image";
 const CaraouselProducts = () => {
   const [slides, setSlides] = useState([]);
 
@@ -49,7 +49,9 @@ const CaraouselProducts = () => {
           slides.map((slide, i) => (
             <div key={i} className="p-2">
               <div className="h-[250px] w-full flex items-center justify-center border rounded shadow bg-white">
-                <img
+                <Image
+                height={500}
+                width={500}
                   src={slide.imageUrl}
                   alt={`Slide ${i}`}
                   className="max-h-full max-w-full object-contain"

@@ -3,9 +3,10 @@ import React from 'react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useSession, signIn, signOut } from "next-auth/react"
-
+import { useSession, signIn, signOut } from "next-auth/react";
 import Image from 'next/image';
+
+
 const page = () => {
   const { data: session } = useSession()
 

@@ -61,7 +61,7 @@ export default function CartPage(){
       {cartItems.map((item, i) => (
         <div key={i} className="grid grid-cols-5 gap-4 p-4 border-b items-center ">
           <div className="flex h-[12vh] items-center gap-2">
-            <img src={item.image} alt={item.productName} className="h-16 w-16 object-cover" />
+            <Image src={item.image} alt={item.productName} className="h-16 w-16 object-cover" height={100} width={100}/>
             <p>{item.productName}</p>
           </div>
           <div>₹{item.price}</div>

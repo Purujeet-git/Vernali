@@ -1,8 +1,9 @@
 'use client'
 
-import { useEffect, useState } from "react"
-import { useSession } from "next-auth/react"
-import axios from "axios"
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import axios from "axios";
+import Image from "next/image";
 
 export default function Myorders() {
   const { data: session, status } = useSession();
@@ -61,16 +62,11 @@ export default function Myorders() {
             <div className="mt-4">
               {order.items.map((item, index) => (
                 <div key={index} className="flex items-center gap-4 border-t pt-2 mt-2">
-                  <img src={item.image} alt={item.productName} className="w-16 h-16 object-cover rounded" />
+                  <Image src={item.image} alt={item.productName} className="w-16 h-16 object-cover rounded" height={100} width={100}/>
                   <div>
                     <p className="font-semibold">{item.productName}</p>
                     <p>Qty: {item.quantity} | Price: ₹{item.price}</p>
-                    {/* Show Return button if status = 'delivered' and within 7 days */}
-                    {/* {console.log("Return eligibility:", {
-                      deliveredAt: order.deliveredAt,
-                      status: order.orderStatus,
-                      isEligible: isWithinReturnWindow(order.deliveredAt),
-                    })} */}
+                    
                     {order.orderStatus?.toLowerCase() === 'delivered' && isWithinReturnWindow(order.deliveredAt) && (
                       <a
                         href={`/returns/request?orderId=${order._id}&productId=${item._id}`}
@@ -91,5 +87,3 @@ export default function Myorders() {
     </div>
   );
 }
-
-// Utility function to check return window (e.g., 7 days)
