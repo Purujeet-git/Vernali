@@ -4,7 +4,7 @@ import Product from '@/models/Product';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { isAdmin } from '@/lib/isAdmin';
-import ProductDetailClient from '../../components/ProductDetailClient';
+import ProductDetailClient from './ProductDetailClient';
 
 export default async function ProductDetailPage({ params }) {
   const { slug } = params;
