@@ -1,4 +1,4 @@
-import OrdersList from "./OrdersList";
+import OrdersList from "../admin_components/OrdersList";
 import connectDB from "@/lib/mongodb";
 import Order from "@/models/Order";
 import { serializeMongoDoc } from "@/lib/serializeMongoDoc";
