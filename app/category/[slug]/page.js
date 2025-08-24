@@ -61,7 +61,7 @@ export default function CategoryPage() {
       );
     })
   ) : (
-    <p>No products found in this category.</p>
+    <p className="text-amber-300">No products found in this category.</p>
   )}
 </div>
 

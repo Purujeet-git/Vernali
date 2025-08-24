@@ -32,7 +32,7 @@ export default function AddToCartButton({product}) {
         <button
         onClick={handleAddToCart}
         disabled={loading || added}
-        className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded mt-4"
+        className="bg-purple-600 hover:bg-purple-700 text-amber-300 px-6 py-2 rounded mt-4"
         >
             {loading ? 'Adding...':added ?"Added to Cart":"Add to Cart"}
         </button>

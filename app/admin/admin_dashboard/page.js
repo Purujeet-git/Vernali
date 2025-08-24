@@ -14,7 +14,6 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { Router } from "next/router"
 
 
 export default function AdminDashboard() {
@@ -31,7 +30,7 @@ export default function AdminDashboard() {
 
   
   useEffect(() => {
-    if (status === 'loading') return <p> Loading ...</p>;
+    if (status === 'loading') return ;
 
 
     if (session?.user?.name) {

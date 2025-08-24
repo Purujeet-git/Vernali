@@ -12,7 +12,7 @@ export default function BuyNowButton({ product }) {
   return (
     <button
       onClick={handleBuyNow}
-      className="bg-blue-600 px-5 py-2 rounded-xl text-white hover:bg-blue-500"
+      className="bg-purple-600 hover:bg-purple-700 text-amber-300 px-6 py-2 rounded mt-4"
     >
       Buy Now
     </button>
